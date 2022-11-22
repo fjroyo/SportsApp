@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta charset="iso-8859-1">
+    <meta http-equiv="Content-type" content="text/html; charset=iso-8859-1">
+
+    <title>Sports App: MongoDB Hackathon</title>
+
+    <link rel="stylesheet" type="text/css" href="/pure.css">
+    <link rel="stylesheet" type="text/css" href="/pure-grid.css">
+
+    <link rel="stylesheet" type="text/css" href="/pure-theme.css">
+    <script src="https://use.fontawesome.com/2bc50e0507.js"></script>
+</head>
+<body>
+

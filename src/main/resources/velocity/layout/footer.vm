@@ -1,0 +1,18 @@
+
+    
+    <div class="footer l-box is-center">
+        MongoDB Workshops 2021
+    </div>
+
+
+
+
+
+    </body>
+
+    <script type="text/javascript">
+        // JavaScript code goes here
+        document.getElementsByTagName('body')[0].classList.add('bkg-' + Math.floor(Math.random(10)*10 + 1));
+    </script>
+
+</html>

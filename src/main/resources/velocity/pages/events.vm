@@ -1,0 +1,127 @@
+#parse( "velocity/layout/header.vm" )
+
+#set( $section = "events" )
+#parse( "velocity/layout/menu.vm" )
+
+
+<div class="pure-g">
+
+    <div  class="pure-u-3-24">&nbsp;</div>
+
+    <div class="pure-u-18-24 content">
+            <h2>Search Event</h2>
+            <form action="/events" class="pure-form pure-form-stacked">
+                <fieldset>
+                    <input type="hidden" name="action" value="findEvent"/>
+                        <div class="pure-u-1-6">
+                            <label for="sport">Sport</label>
+                            <input type="text" name="sport" required class="pure-u-21-24"/>
+                        </div>
+                        <div class="pure-u-1-6">
+                            <label for="minStartTime">Min. Start Time</label>
+                            <input type="datetime-local" name="minStartTime" placeholder="Min Start Time" required class="pure-u-21-24"/>
+                        </div>
+                        <div class="pure-u-1-6">
+                            <label for="maxStartTime">Max. Start Time</label>
+                            <input type="datetime-local" name="maxStartTime" placeholder="Max Start Time" required class="pure-u-21-24"/>
+                        </div>
+                        <div class="pure-u-1-6">
+                            <label for="location">Location</label>
+                            <input type="text" name="location" required class="pure-u-21-24"/>
+                        </div>
+                        <div class="pure-u-1-6">
+                            <label for="submit">&nbsp;</label>
+                            <button type="submit" id="contact-submit" class="pure-button pure-button-primary pure-u-21-24">Search</button>
+                        </div>
+                </fieldset>
+            </form>
+
+
+        #if($event)
+        <div class="tab" id="event_div">
+            <div>
+                <table class="pure-table">
+                    <thead>
+                    <tr>
+                        <th>Sport</th>
+                        <th>Location</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>$event.sport</td>
+                        <td>$event.location</td>
+                        <td>${date.format('d-M-yyyy HH:mm', $event.startTime)}</td>
+                        <td>${date.format('d-M-yyyy HH:mm', $event.endTime)}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="interestTable">
+                    <h4>Equipo 1: $event.team1.name</h4>
+                    <table class="pure-table">
+                        #foreach( $player in $event.team1.players )
+                        <tr>
+                            <td>$player.firstName</td>
+                            <td>$player.lastName</td>
+                            <td>$player.email</td>
+                        </tr>
+                        #end
+                    </table>
+                </div>
+                <div class="interestTable">
+                    <h4>Equipo 2: $event.team2.name</h4>
+                    <table class="pure-table">
+                        #foreach( $player in $event.team2.players )
+                        <tr>
+                            <td>$player.firstName</td>
+                            <td>$player.lastName</td>
+                            <td>$player.email</td>
+                        </tr>
+                        #end
+                    </table>
+                </div>
+            </div>
+        </div>
+        #end
+    
+        <hr>
+
+        <h2>Add New Event</h2>
+        <form action="/events" class="pure-form pure-form-stacked">
+                    <fieldset>
+                        <input type="hidden" name="action" value="addEvent"/>
+
+                        <label for="sport">Sport</label>
+                        <input type="text" name="sport" placeholder="Sport">
+
+                        <label for="team1">Team 1</label>
+                        <input type="text" name="team1" placeholder="Name">
+
+                        <label for="team2">Team 2</label>
+                        <input type="text" name="team2" placeholder="Name">
+
+                        <label for="startTime">Start Time</label>
+                        <input type="datetime-local" name="startTime" placeholder="Start Time">
+
+                        <label for="endTime">End Time</label>
+                        <input type="datetime-local" name="endTime" placeholder="End Time">
+
+                        <label for="location">Location</label>
+                        <input type="text" name="location" placeholder="Location">
+
+                        <button type="submit" id="contact-submit" class="pure-button pure-button-primary">Submit</button>
+
+                    </fieldset>
+        </form>
+
+    </div>
+
+    <div  class="pure-u-3-24">&nbsp;</div>
+
+</div>
+
+#parse( "velocity/layout/footer.vm" )
+
+

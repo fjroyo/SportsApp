@@ -1,0 +1,147 @@
+#parse( "velocity/layout/header.vm" )
+
+
+#set( $section = "users" )
+#parse( "velocity/layout/menu.vm" )
+
+
+<div class="pure-g">
+    <div  class="pure-u-3-24">&nbsp;</div>
+
+    <div class="pure-u-18-24 content">
+            <h2>Search User</h2>
+            <form action="/users" class="pure-form search-form">
+                <fieldset>
+                    <input type="hidden" name="action" value="findUser"/>
+                    <input class="pure-input-2-3" placeholder="Search by e-mail" type="text" name="email" required>
+                    <button type="submit" id="contact-submit" class="pure-button pure-button-primary button-small">Buscar
+                    </button>
+                </fieldset>
+            </form>
+
+
+            #if($user)
+            <div class="tab" id="user_div">
+                <div>
+                    <table class="pure-table">
+                        <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Phone</th>
+                            <th>Position</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>$user["_id"]</td>
+                            <td>$user.firstName</td>
+                            <td>$user.lastName</td>
+                            <td>$user.phone</td>
+                            <td>$user.position</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="interestTable">
+                        <h4>Interests</h4>
+                        <table class="pure-table">
+                            #foreach( $interest in $user.interests )
+                            <tr>
+                                <td>$interest</td>
+                                <td>
+                                    <form action="/users">
+                                        <input type="hidden" name="action" value="removeInterest"/>
+                                        <input type="hidden" name="email" value="$user["_id"]"/>
+                                        <input type="hidden" name="interest" value="$interest"/>
+                                        <button type="submit"><i class='fa fa-trash mi-fa-trash'></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                            #end
+                        </table>
+                        <form action="/users">
+                            <input type="text" placeholder="Sport" name="interest" required>
+                            <input type="hidden" name="action" value="addInterest"/>
+                            <input type="hidden" name="email" value="$user["_id"]"/>
+                            <button type="submit">Add</button>
+                        </form>
+                    </div>
+                    <div class="tablaIntereses">
+                        <h4>Pending Invitations</h4>
+                        <table class="pure-table">
+                            #foreach( $invitation in $user.pendingInvitations )
+                            <tr>
+                                <td>$invitation.sport</td>
+                                #set ($formatedDate = ${date.format('d-M-yyyy HH:mm', $invitation.startTime)})
+                                <td>$formatedDate</td>
+                                <td>
+                                    Team 1: $invitation.team1
+                                    <form action="/users">
+                                        <input type="hidden" name="action" value="acceptInvitation"/>
+                                        <input type="hidden" name="email" value="$user["_id"]"/>
+                                        <input type="hidden" name="eventId" value="$invitation.eventId"/>
+                                        <input type="hidden" name="team" value="team1"/>
+                                        <button type="submit" id="contact-submit">Join</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    Team 2: $invitation.team2
+                                     <form action="/users">
+                                        <input type="hidden" name="action" value="acceptInvitation"/>
+                                        <input type="hidden" name="email" value="$user["_id"]"/>
+                                        <input type="hidden" name="eventId" value="$invitation.eventId"/>
+                                        <input type="hidden" name="team" value="team2"/>
+                                        <button type="submit" id="contact-submit">Join</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="/users">
+                                        <input type="hidden" name="action" value="rejectInvitation"/>
+                                        <input type="hidden" name="email" value="$user["_id"]"/>
+                                        <input type="hidden" name="eventId" value="$invitation.eventId"/>
+                                        <button type="submit" id="contact-submit">Reject</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            #end
+                        </table>
+                    </div>
+                </div>
+            </div>
+            #end
+    
+    
+            <h2>Add User</h2>
+            <form class="pure-form" action="/users">
+                <input type="hidden" name="action" value="addUser"/>
+                <fieldset>
+                    <label for="email">Email</label>
+                    <input type="text" name="email" placeholder="E-mail" required>
+
+                    <label for="firstName">First Name</label>
+                    <input type="text" name="firstName" placeholder="First Name" required>
+
+                    <label for="lastName">Last Name</label>
+                    <input type="text" name="lastName" placeholder="Last Name" required>
+
+                    <label for="phone">Phone</label>
+                    <input type="text" name="phone" placeholder="Phone" required>
+
+                    <label for="position">Position</label>
+                    <input type="text" name="position" placeholder="Position" required>
+
+                    <button type="submit" id="contact-submit" class="pure-button pure-button-primary">Submit</button>
+                </fieldset>
+            </form>
+    
+    </div>
+
+    <div  class="pure-u-3-24">&nbsp;</div>
+
+
+</div>
+
+#parse( "velocity/layout/footer.vm" )
+
+

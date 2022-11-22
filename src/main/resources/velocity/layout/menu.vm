@@ -1,0 +1,21 @@
+<div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+        <a class="pure-menu-heading little-pad" href="/"><img class="logo-top" src="/imgs/logo.png" /> Sports App</a>
+        <span class="pure-menu-heading">CHOOSE YOUR SPORT AND LET'S PLAY!</span>
+        <ul class="pure-menu-list">
+            #if( $section == "events")
+                <li class="pure-menu-item pure-menu-selected"><a href="/events" class="pure-menu-link">Events</a></li>
+            #{else}
+                <li class="pure-menu-item"><a href="/events" class="pure-menu-link">Events</a></li>
+            #end
+
+            #if( $section == "users")
+                <li class="pure-menu-item pure-menu-selected"><a href="/users" class="pure-menu-link">Users</a></li>
+            #{else}
+                <li class="pure-menu-item"><a href="/users" class="pure-menu-link">Users</a></li>
+            #end
+
+
+        </ul>
+    </div>
+</div>
