@@ -16,44 +16,19 @@ public class ManageUsers {
         return mClient.getUsersCollection().find(d).first();
     }
 
-    // Version with insertOne (basic task)
+    // TODO - insert user
     public Document addUser(String email,
                         String firstName,
                         String lastName,
                         String phone,
                         String position) {
 
-        Document user = new Document("_id", email)
-                .append("firstName", firstName)
-                .append("lastName", lastName)
-                .append("phone", phone)
-                .append("position", position);
+    	Document user = null; // TODO - quitar esta línea tras completar el ejercicio
+    	
+    	// TODO - completar el código con la lógica para insertar un nuevo usuario
 
-        mClient.getUsersCollection().insertOne(user);
         return user;
     }
-
-    /*
-    // Version with upsert (extra task)
-    public Document addUser(String email,
-                        String firstName,
-                        String lastName,
-                        String phone,
-                        String position) {
-
-        Document user = new Document("_id", email)
-                .append("firstName", firstName)
-                .append("lastName", lastName)
-                .append("phone", phone)
-                .append("position", position);
-
-
-        return mClient.getUsersCollection().findOneAndUpdate(
-                new Document("_id", email),
-                new Document("$set", user),
-                new FindOneAndUpdateOptions().returnDocument(ReturnDocument.AFTER).upsert(true));
-    }
-    */
 
     public boolean deleteUser(String email) {
         DeleteResult result =  mClient.getUsersCollection().deleteOne(new Document("_id", email));
