@@ -23,7 +23,7 @@ Un usuario consta de las siguientes propiedades:
 - Teléfono
 - Posición
 
-Además, una vez creado puede añadir sus intereses y recibirá una invitación para apuntarse a los eventos sobre los que ha manifestado interés. Una vez que un usuario se una a un evento, dicho evento registrará al usuario en su listado de jugadores del equipo correspondiente.
+Una vez creado puede añadir sus intereses y recibirá una invitación para apuntarse a los eventos sobre los que ha manifestado interés. Una vez que un usuario se una a un evento, dicho evento registrará al usuario en su listado de jugadores del equipo correspondiente.
 
 # Ejecutar la aplicación
 
