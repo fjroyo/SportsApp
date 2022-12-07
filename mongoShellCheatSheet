@@ -12,3 +12,7 @@ db.inventory.insertMany(
 { "_id" : 9, "item" : "t2", type: "toys", quantity: 50 },
 { "_id" : 10, "item" : "f4", type: "food", quantity: 75 }]
 )
+
+{ quantity: { $gte: 100, $lte: 200 } }
+
+db.inventory.find({ quantity: { $gte: 100, $lte: 200 } }).explain()
