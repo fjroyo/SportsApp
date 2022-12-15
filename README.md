@@ -37,3 +37,4 @@ Requisito: es necesario ejecutarla con Java 1.8.x
 
 Nota: la aplicación no es completamente funcional. Falta el código correspondiente a añadir usuarios en la clase src/main/java/com/mongodb/sports/model/ManageUsers.java. Completar dicha clase es uno de los ejercicios del workshop.
 
+CONNECTION_STRING="mongodb+srv://USER:PWD@freetiercluster.eya1w.mongodb.net/?retryWrites=true&w=majority"
